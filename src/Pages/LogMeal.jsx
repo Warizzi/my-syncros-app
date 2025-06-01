@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useAppContext } from '../Context/AppContext';
 
 function LogMeal() {
+    const {addMeal} = useAppContext();
     const [meal, setMeal] = useState('');
     const [calories, setCalories] = useState('');
     const [error, setError] = useState('');
@@ -25,6 +27,7 @@ function LogMeal() {
         console.log('Meal logged:', { meal, calories });
 
         //Clears the form
+        addMeal({ mealName: meal, calories: parseInt(calories)});
         setMeal('');
         setCalories('');
     };
