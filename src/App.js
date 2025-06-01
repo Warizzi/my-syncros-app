@@ -1,6 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import './App.css';
+
 import Navbar from './Components/Navbar';
 import Home from './Pages/Home';
 import LogMeal from './Pages/LogMeal';
