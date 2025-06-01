@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useAppContext } from '../Context/AppContext';
 
 
 function LogWorkout() {
+
+    const { addWorkout } = useAppContext();
     const [type, setType] = useState('');
     const [duration, setDuration] = useState('');
     const [notes, setNotes] = useState('');
@@ -25,6 +28,12 @@ function LogWorkout() {
 
         //Should save to context API
         console.log('Workout logged:', { type, duration, notes });
+
+        addWorkout({
+            type,
+            duration:  parseInt(duration),
+            notes,
+        });
 
         // Clear form
         setType('');
@@ -56,23 +65,23 @@ function LogWorkout() {
 
                 <div>
                     <label htmlFor="duration">Duration (minutes):</label>
-                    <input 
-                    type="text"
-                    id="duration"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}/>
+                    <input
+                        type="text"
+                        id="duration"
+                        value={duration}
+                        onChange={(e) => setDuration(e.target.value)} />
 
                 </div>
 
                 <div>
                     <label htmlFor="notes">Notes (optional):</label>
                     <textarea
-                    id="notes"
-                    value={notes}
-                    onChange={(e) => setNotes(e.target.value)}/>
+                        id="notes"
+                        value={notes}
+                        onChange={(e) => setNotes(e.target.value)} />
                 </div>
 
-                {error && <p style={{ color: 'red'}}>{error}</p>}
+                {error && <p style={{ color: 'red' }}>{error}</p>}
                 <button type="submit">Log Workout</button>
             </form>
         </div>
