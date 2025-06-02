@@ -25,8 +25,8 @@ export const AppProvider = ({ children }) => {
         }, 1000);
     }, []);
 
-    const addMeal = (meal) => setMeals((prev) => [...prev, meal]);
-    const addWorkout = (workout) => setWorkouts((prev) => [...prev, workout]);
+    const addMeal = (meal) => setMeals((prev) => [...prev, {...meal, date: new Date().toISOString().split('T')[0]}]);
+    const addWorkout = (workout) => setWorkouts((prev) => [...prev, {...workout, date: new Date().toISOString().split('T')[0]}]);
     const addJournalEntry = (entry) => setJournal((prev) => [...prev, entry]);
 
     return (

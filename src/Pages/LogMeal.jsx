@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useAppContext } from '../Context/AppContext';
 
 function LogMeal() {
