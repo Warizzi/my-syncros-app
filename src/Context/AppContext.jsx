@@ -14,6 +14,10 @@ export const AppProvider = ({ children }) => {
     const [user, setUser] = useState({ name: "Guest", goalCalories: 2200 });
     const [affirmations, setAffirmations] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [communityPosts, setCommunityPosts] = useState(() => {
+        const saved = localStorage.getItem("communityPosts");
+        return saved ? JSON.parse(saved) : [];
+    });
 
     //Example: Loads affirmations (mock or API)
     useEffect(() => {
@@ -25,9 +29,19 @@ export const AppProvider = ({ children }) => {
         }, 1000);
     }, []);
 
-    const addMeal = (meal) => setMeals((prev) => [...prev, {...meal, date: new Date().toISOString().split('T')[0]}]);
-    const addWorkout = (workout) => setWorkouts((prev) => [...prev, {...workout, date: new Date().toISOString().split('T')[0]}]);
+    useEffect(() => {
+        localStorage.setItem("communityPosts", JSON.stringify(communityPosts));
+    }, [communityPosts]);
+
+    const addMeal = (meal) => setMeals((prev) => [...prev, { ...meal, date: new Date().toISOString().split('T')[0] }]);
+    const addWorkout = (workout) => setWorkouts((prev) => [...prev, { ...workout, date: new Date().toISOString().split('T')[0] }]);
     const addJournalEntry = (entry) => setJournal((prev) => [...prev, entry]);
+    const addCommunityPost = (post) => setCommunityPosts((prev) => [...prev, { ...post, id: Date.now(), likes: 0, comments: [] }]);
+    const likePost = (postId) => setCommunityPosts((prevPosts) => prevPosts.map((post) => post.id === postId ? { ...post, likes: post.likes + 1 } : post));
+    const addComment = (postId, comment) => {setCommunityPosts(prev => prev.map(post => post.id === postId ? { ...post, comments: [...post.comments, comment] } : post
+            )
+        );
+    };
 
     return (
         <AppContext.Provider
@@ -42,6 +56,10 @@ export const AppProvider = ({ children }) => {
                 addJournalEntry,
                 affirmations,
                 loading,
+                communityPosts,
+                addCommunityPost,
+                likePost,
+                addComment
             }}>
             {children}
         </AppContext.Provider>
