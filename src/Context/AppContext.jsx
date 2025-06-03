@@ -48,11 +48,27 @@ export const AppProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem("workouts", JSON.stringify(workouts));
     }, [workouts]);
+
+    useEffect(() => {
+        const storedJournal = JSON.parse(localStorage.getItem("journal"));
+        if (storedJournal) setJournal(storedJournal);
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("journal", JSON.stringify(journal));
+    }, [journal]);
     
 
     const addMeal = (meal) => setMeals((prev) => [...prev, { ...meal, date: new Date().toISOString().split('T')[0] }]);
     const addWorkout = (workout) => setWorkouts((prev) => [...prev, { ...workout, date: new Date().toISOString().split('T')[0] }]);
-    const addJournalEntry = (entry) => setJournal((prev) => [...prev, entry]);
+    const addJournalEntry = (entryOrUpdatedList) => {
+        if (Array.isArray(entryOrUpdatedList)) {
+            setJournal(entryOrUpdatedList); 
+        } else {
+            setJournal((prev) => [...prev, entryOrUpdatedList]); 
+        }
+    };
+    
     const addCommunityPost = (post) => setCommunityPosts((prev) => [...prev, { ...post, id: Date.now(), likes: 0, comments: [] }]);
     const likePost = (postId) => setCommunityPosts((prevPosts) => prevPosts.map((post) => post.id === postId ? { ...post, likes: post.likes + 1 } : post));
     const addComment = (postId, comment) => {setCommunityPosts(prev => prev.map(post => post.id === postId ? { ...post, comments: [...post.comments, comment] } : post
