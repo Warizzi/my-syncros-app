@@ -30,8 +30,25 @@ export const AppProvider = ({ children }) => {
     }, []);
 
     useEffect(() => {
+        const storedMeals = JSON.parse(localStorage.getItem("meals"));
+        const storedWorkouts = JSON.parse(localStorage.getItem("workouts"));
+        if (storedMeals) setMeals(storedMeals);
+        if (storedWorkouts) setWorkouts(storedWorkouts);
+    }, []);
+    
+
+    useEffect(() => {
         localStorage.setItem("communityPosts", JSON.stringify(communityPosts));
     }, [communityPosts]);
+
+    useEffect(() => {
+        localStorage.setItem("meals", JSON.stringify(meals));
+    }, [meals]);
+    
+    useEffect(() => {
+        localStorage.setItem("workouts", JSON.stringify(workouts));
+    }, [workouts]);
+    
 
     const addMeal = (meal) => setMeals((prev) => [...prev, { ...meal, date: new Date().toISOString().split('T')[0] }]);
     const addWorkout = (workout) => setWorkouts((prev) => [...prev, { ...workout, date: new Date().toISOString().split('T')[0] }]);
@@ -42,6 +59,7 @@ export const AppProvider = ({ children }) => {
             )
         );
     };
+
 
     return (
         <AppContext.Provider
