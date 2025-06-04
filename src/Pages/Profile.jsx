@@ -34,6 +34,21 @@ const Profile = () => {
                 </div>
 
             </section>
+
+              <section className="github-link">
+                <h2>View the Code</h2>
+                <p>
+                    You can explore the full source code for this project on my GitHub repository:
+                </p>
+                <a
+                    href="https://github.com/Warizzi/my-syncros-app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="github-button"
+                >
+                    Visit GitHub Repo
+                </a>
+            </section>
         </div>
     );
 };
