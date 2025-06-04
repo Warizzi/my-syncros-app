@@ -7,7 +7,7 @@ function Footer() {
                 © {new Date().getFullYear()} Syncros Tracker — Built with 💪 by Warona Louw
             </p>
             <div style={styles.links}>
-                <a href="/about" style={styles.link}>About</a>
+                <a href="/profile" style={styles.link}>Profile</a>
                 <a href="/community" style={styles.link}>Community</a>
                 <a href="/journal" style={styles.link}>Journal</a>
             </div>

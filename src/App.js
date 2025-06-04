@@ -14,12 +14,14 @@ import Progress from './Pages/Progress';
 import Community from './Pages/Community';
 import Profile from './Pages/Profile';
 import Footer from './Components/Footer';
+import BackgroundSlider from './Components/BackgroundSlider';
 
 function App() {
   return (
     <AppProvider>
-      <div classname="app-container">
+      <div className="app-container">
         <Router>
+        <BackgroundSlider />
           <Navbar />
           <div className="content">
 

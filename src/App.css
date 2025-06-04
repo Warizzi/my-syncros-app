@@ -81,3 +81,29 @@ html, body {
   flex: 1;
   padding: 1rem;
 }
+
+:root {
+  --navy-blue: #1F3541;
+  --blue-grotto: #5289B5;
+  --baby-blue: #AFD8F2;
+  --white: #EDF2F3;
+
+  --main-font: 'Arial', sans-serif;
+}
+
+
+body {
+  margin: 0;
+  font-family: var(--main-font);
+  background-color: var(--white);
+  color: #000;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  padding: 1rem;
+}
