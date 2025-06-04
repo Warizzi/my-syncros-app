@@ -13,7 +13,6 @@ import Journal from './Pages/Journal';
 import Progress from './Pages/Progress';
 import Community from './Pages/Community';
 import Profile from './Pages/Profile';
-import Settings from './Pages/Settings';
 import Footer from './Components/Footer';
 
 function App() {
@@ -32,8 +31,7 @@ function App() {
               <Route path="/progress" element={<Progress />} />
               <Route path="/community" element={<Community />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/settings" element={<Settings />} />
-
+              
             </Routes>
           </div>
 
