@@ -1,0 +1,49 @@
+.profile {
+  padding: 2rem;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+.hero {
+  margin-bottom: 3rem;
+}
+
+.profile-image {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bio {
+  max-width: 600px;
+  margin: auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.reflection {
+  margin-top: 3rem;
+}
+
+.reflection h2 {
+  margin-bottom: 2rem;
+}
+
+.reflection-block {
+  background-color: rgba(255, 255, 255, 0.05);
+  margin: 1rem auto;
+  max-width: 700px;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: left;
+  backdrop-filter: blur(3px);
+}
+
+.reflection-image {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+}
