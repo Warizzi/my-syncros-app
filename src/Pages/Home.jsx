@@ -36,7 +36,7 @@ const Home = () => {
 
       {/* Affirmation */}
       <section className="affirmation">
-        <blockquote>"Small steps every day lead to big change."</blockquote>
+        <blockquote>"At our lowest moments, we are capable of the greatest change!"</blockquote>
       </section>
 
       {/* Call to Action */}
