@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAppContext } from '../Context/AppContext';
 
+
 function Progress() {
     const { meals, workouts } = useAppContext();
     const [filterType, setFilterType] = useState('all');
