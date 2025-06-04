@@ -4,27 +4,31 @@ import './BackgroundSlider.css';
 const images = [
   '/Assets/Wellness1.jpeg',
   '/Assets/Wellness2.jpg',
-  '/Assets/Wellness3.jpeg',
-  
-]; // put your image paths here (you can use public folder)
+  '/Assets/Wellness4.jpeg',
+];
 
 const BackgroundSlider = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex(prev => (prev + 1) % images.length);
-    }, 5000); // change image every 5 seconds
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div
-      className="background-slider"
-      style={{ backgroundImage: `url(${images[index]})` }}
-    ></div>
-
+    <div className="background-slider-container">
+      {images.map((image, i) => (
+        <div
+          key={i}
+          className={`background-slide ${i === index ? 'active' : ''}`}
+          style={{ backgroundImage: `url(${image})` }}
+        />
+      ))}
+    </div>
   );
 };
 
 export default BackgroundSlider;
+
