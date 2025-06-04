@@ -59,7 +59,7 @@ function Journal() {
                 style={{ width: '100%', padding: '0.5rem' }}
             />
             <button onClick={handleSave} style={{ marginTop: '0.5rem' }}>{isEditing ? 'Update Entry' : 'Save Entry'}</button>
-            <button onClick={handleSave} style={{ marginTop: '0.5rem' }}>{isEditing ? 'Update Entry' : 'Save Entry'}</button>
+            
 
             {isEditing && (
                 <button
